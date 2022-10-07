@@ -7,6 +7,7 @@
       <Diagram DiagramId="97d81673920e426e94256a7bc211d1c4" Name="Diagram1">
         <EntityTypeShape EntityType="DBLogisticModel.TblCategory" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DBLogisticModel.TblCustomer" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBLogisticModel.TblCity" Width="1.5" PointX="0.75" PointY="3.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

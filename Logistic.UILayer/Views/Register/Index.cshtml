@@ -3,67 +3,47 @@
     Layout = null;
 }
 
-
-<!--Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
 <!DOCTYPE HTML>
 <html>
-<head>
-    <title>Creative Account Form Responsive Widget Template | Home :: w3layouts</title>
-    <script src="~/Templates/web/js/jquery-1.11.0.min.js"></script>
-    <!-- Custom Theme files -->
-    <link href="~/Templates/web/css/style.css" rel="stylesheet" type="text/css" media="all" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="keywords" content="Creative Account Form Responsive, Login form web template, Sign up Web Templates, Flat Web Templates, Login signup Responsive web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
-    <!--google fonts-->
-    <link href='//fonts.googleapis.com/css?family=Poppins:400,600,500,700' rel='stylesheet' type='text/css'>
-    <script>
-    $(document).ready(function (c) {
-            $('.log-close').on('click', function (c) {
-                $('.login').fadeOut('slow', function (c) {
-                    $('.login').remove();
-                });
-            });
-        });
-    </script>
-</head>
+@Html.Partial("PartialHead")
 <body>
-
-
-
     <h1>Müşteri Kayıt Formu</h1>
 
     <div class="login">
-
-        <h2><span>Secure Login</span> <i>or get a</i> <a href="#">free account</a></h2>
         <span class="log-close"> </span>
         <div class="login-bottom">
-            <form>
+            <form method="post">
+
                 <div class="text">
-                    <input type="text" placeholder="User email" required="" />
-                    <span class="men"></span>
-                    <div class="clear"> </div>
-                </div>
-                <div class="text">
-                    <input type="password" placeholder="Password..." required="" />
-                    <span class="pass"></span>
+                    <input type="text" placeholder="adınızı giriniz" required="" name="CustomerName" />
                     <div class="clear"> </div>
                 </div>
 
+                <div class="text">
+                    <input type="text" placeholder="soyadınızı giriniz" required="" name="CustomerSurname" />
+                    <div class="clear"> </div>
+                </div>
+
+                <div class="text">
+                    <input type="text" placeholder="telefon numaranızı giriniz" required="" name="CustomerPhone" />
+                    <div class="clear"> </div>
+                </div>
+
+                <div class="text">
+                    <input type="text" placeholder="mail adresinizi giriniz" required="" name="CustomerMail" />
+                    <div class="clear"> </div>
+                </div>
+
+                <div class="text">
+                    <input type="password" placeholder="şifrenizi giriniz" required="" name="CustomerPassword" />
+                    <div class="clear"> </div>
+                </div>
+
+
                 <div class="remember">
-                    <div class="remember-top">
-                        <a href="#">Forgot Password</a>
-                        <span class="checkbox1">
-                            <label class="checkbox"><input type="checkbox" name="" checked=""><i> </i>Remember me</label>
-                        </span>
-                    </div>
+
                     <div class="send">
-                        <input type="submit" value="Sign In">
+                        <input type="submit" value="Kayıt Ol">
                     </div>
                     <div class="clear"> </div>
                 </div>
@@ -71,7 +51,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         </div>
     </div>
     <div class="copy-right">
-        <p>© 2016 Creative Account Form. All Rights Reserved | Design by  <a href="http://w3layouts.com/" target="_blank">  W3layouts </a></p>
+        <p>© @DateTime.Now.Year Creative Account Form. Tüm hakları saklıdır | Design by  <a href="http://w3layouts.com/" target="_blank">  W3layouts </a></p>
     </div>
 </body>
 </html>

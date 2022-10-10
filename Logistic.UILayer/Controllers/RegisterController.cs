@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Logistic.UILayer.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,9 +9,26 @@ namespace Logistic.UILayer.Controllers
 {
     public class RegisterController : Controller
     {
+        //using Logistic.UILayer.Models;
+        DBLogisticEntities db = new DBLogisticEntities();
+
+        [HttpGet]
         public ActionResult Index()
         {
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult Index(TblCustomer p)
+        {
+            db.TblCustomer.Add(p);
+            db.SaveChanges();
+            return RedirectToAction("Index", "Login");
+        }
+
+        public PartialViewResult PartialHead()
+        {
+            return PartialView();
         }
     }
 }

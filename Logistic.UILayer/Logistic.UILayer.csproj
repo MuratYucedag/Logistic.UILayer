@@ -131,6 +131,7 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\CityController.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\NewCategoryController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
@@ -382,6 +383,9 @@
     <Content Include="Views\Admin\PartialSidebar.cshtml" />
     <Content Include="Views\Admin\PartialScript.cshtml" />
     <Content Include="Views\Admin\PartialSubscribe.cshtml" />
+    <Content Include="Views\NewCategory\AddCategory.cshtml" />
+    <Content Include="Views\NewCategory\UpdateCategory.cshtml" />
+    <Content Include="Views\Dashboard\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

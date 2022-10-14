@@ -31,10 +31,72 @@
           <Property Name="CustomerMail" Type="nvarchar" MaxLength="50" />
           <Property Name="CustomerPassword" Type="nvarchar" MaxLength="20" />
         </EntityType>
+        <EntityType Name="TblOrder">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderCustomer" Type="int" />
+          <Property Name="FromCity" Type="int" />
+          <Property Name="ArrivalCity" Type="int" />
+          <Property Name="OrderProduct" Type="nvarchar" MaxLength="50" />
+          <Property Name="OrderSize" Type="nvarchar" MaxLength="20" />
+          <Property Name="OrderPrice" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="OrderDate" Type="smalldatetime" />
+        </EntityType>
+        <Association Name="FK_TblOrder_TblCity2">
+          <End Role="TblCity" Type="Self.TblCity" Multiplicity="0..1" />
+          <End Role="TblOrder" Type="Self.TblOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblCity">
+              <PropertyRef Name="CityID" />
+            </Principal>
+            <Dependent Role="TblOrder">
+              <PropertyRef Name="FromCity" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblOrder_TblCity3">
+          <End Role="TblCity" Type="Self.TblCity" Multiplicity="0..1" />
+          <End Role="TblOrder" Type="Self.TblOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblCity">
+              <PropertyRef Name="CityID" />
+            </Principal>
+            <Dependent Role="TblOrder">
+              <PropertyRef Name="ArrivalCity" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblOrder_TblCustomer1">
+          <End Role="TblCustomer" Type="Self.TblCustomer" Multiplicity="0..1" />
+          <End Role="TblOrder" Type="Self.TblOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblCustomer">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="TblOrder">
+              <PropertyRef Name="OrderCustomer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="DBLogisticModelStoreContainer">
           <EntitySet Name="TblCategory" EntityType="Self.TblCategory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblCity" EntityType="Self.TblCity" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblCustomer" EntityType="Self.TblCustomer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblOrder" EntityType="Self.TblOrder" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_TblOrder_TblCity2" Association="Self.FK_TblOrder_TblCity2">
+            <End Role="TblCity" EntitySet="TblCity" />
+            <End Role="TblOrder" EntitySet="TblOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblOrder_TblCity3" Association="Self.FK_TblOrder_TblCity3">
+            <End Role="TblCity" EntitySet="TblCity" />
+            <End Role="TblOrder" EntitySet="TblOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblOrder_TblCustomer1" Association="Self.FK_TblOrder_TblCustomer1">
+            <End Role="TblCustomer" EntitySet="TblCustomer" />
+            <End Role="TblOrder" EntitySet="TblOrder" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -58,11 +120,25 @@
           <Property Name="CustomerPhone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="CustomerMail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="CustomerPassword" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TblOrder" Relationship="DBLogisticModel.FK_TblOrder_TblCustomer1" FromRole="TblCustomer" ToRole="TblOrder" />
         </EntityType>
         <EntityContainer Name="DBLogisticEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="TblCategory" EntityType="Self.TblCategory" />
           <EntitySet Name="TblCustomer" EntityType="Self.TblCustomer" />
           <EntitySet Name="TblCity" EntityType="DBLogisticModel.TblCity" />
+          <EntitySet Name="TblOrder" EntityType="DBLogisticModel.TblOrder" />
+          <AssociationSet Name="FK_TblOrder_TblCity2" Association="DBLogisticModel.FK_TblOrder_TblCity2">
+            <End Role="TblCity" EntitySet="TblCity" />
+            <End Role="TblOrder" EntitySet="TblOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblOrder_TblCity3" Association="DBLogisticModel.FK_TblOrder_TblCity3">
+            <End Role="TblCity" EntitySet="TblCity" />
+            <End Role="TblOrder" EntitySet="TblOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblOrder_TblCustomer1" Association="DBLogisticModel.FK_TblOrder_TblCustomer1">
+            <End Role="TblCustomer" EntitySet="TblCustomer" />
+            <End Role="TblOrder" EntitySet="TblOrder" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="TblCity">
           <Key>
@@ -70,7 +146,61 @@
           </Key>
           <Property Name="CityID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CityName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TblOrder" Relationship="DBLogisticModel.FK_TblOrder_TblCity2" FromRole="TblCity" ToRole="TblOrder" />
+          <NavigationProperty Name="TblOrder1" Relationship="DBLogisticModel.FK_TblOrder_TblCity3" FromRole="TblCity" ToRole="TblOrder" />
         </EntityType>
+        <EntityType Name="TblOrder">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderCustomer" Type="Int32" />
+          <Property Name="FromCity" Type="Int32" />
+          <Property Name="ArrivalCity" Type="Int32" />
+          <Property Name="OrderProduct" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OrderSize" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="OrderPrice" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="OrderDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="TblCity" Relationship="DBLogisticModel.FK_TblOrder_TblCity2" FromRole="TblOrder" ToRole="TblCity" />
+          <NavigationProperty Name="TblCity1" Relationship="DBLogisticModel.FK_TblOrder_TblCity3" FromRole="TblOrder" ToRole="TblCity" />
+          <NavigationProperty Name="TblCustomer" Relationship="DBLogisticModel.FK_TblOrder_TblCustomer1" FromRole="TblOrder" ToRole="TblCustomer" />
+        </EntityType>
+        <Association Name="FK_TblOrder_TblCity2">
+          <End Type="DBLogisticModel.TblCity" Role="TblCity" Multiplicity="0..1" />
+          <End Type="DBLogisticModel.TblOrder" Role="TblOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblCity">
+              <PropertyRef Name="CityID" />
+            </Principal>
+            <Dependent Role="TblOrder">
+              <PropertyRef Name="FromCity" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblOrder_TblCity3">
+          <End Type="DBLogisticModel.TblCity" Role="TblCity" Multiplicity="0..1" />
+          <End Type="DBLogisticModel.TblOrder" Role="TblOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblCity">
+              <PropertyRef Name="CityID" />
+            </Principal>
+            <Dependent Role="TblOrder">
+              <PropertyRef Name="ArrivalCity" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblOrder_TblCustomer1">
+          <End Type="DBLogisticModel.TblCustomer" Role="TblCustomer" Multiplicity="0..1" />
+          <End Type="DBLogisticModel.TblOrder" Role="TblOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblCustomer">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="TblOrder">
+              <PropertyRef Name="OrderCustomer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -103,6 +233,20 @@
               <MappingFragment StoreEntitySet="TblCity">
                 <ScalarProperty Name="CityName" ColumnName="CityName" />
                 <ScalarProperty Name="CityID" ColumnName="CityID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblOrder">
+            <EntityTypeMapping TypeName="DBLogisticModel.TblOrder">
+              <MappingFragment StoreEntitySet="TblOrder">
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="OrderPrice" ColumnName="OrderPrice" />
+                <ScalarProperty Name="OrderSize" ColumnName="OrderSize" />
+                <ScalarProperty Name="OrderProduct" ColumnName="OrderProduct" />
+                <ScalarProperty Name="ArrivalCity" ColumnName="ArrivalCity" />
+                <ScalarProperty Name="FromCity" ColumnName="FromCity" />
+                <ScalarProperty Name="OrderCustomer" ColumnName="OrderCustomer" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

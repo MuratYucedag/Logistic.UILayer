@@ -8,6 +8,10 @@
         <EntityTypeShape EntityType="DBLogisticModel.TblCategory" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DBLogisticModel.TblCustomer" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DBLogisticModel.TblCity" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="DBLogisticModel.TblOrder" Width="1.5" PointX="5" PointY="1.625" />
+        <AssociationConnector Association="DBLogisticModel.FK_TblOrder_TblCity2" />
+        <AssociationConnector Association="DBLogisticModel.FK_TblOrder_TblCity3" />
+        <AssociationConnector Association="DBLogisticModel.FK_TblOrder_TblCustomer1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -8,6 +8,7 @@ using Logistic.UILayer.Models;
 
 namespace Logistic.UILayer.Controllers
 {
+    [AllowAnonymous]
     public class LoginController : Controller
     {
 

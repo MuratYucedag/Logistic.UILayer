@@ -31,6 +31,26 @@
           <Property Name="CustomerMail" Type="nvarchar" MaxLength="50" />
           <Property Name="CustomerPassword" Type="nvarchar" MaxLength="20" />
         </EntityType>
+        <EntityType Name="TblMap">
+          <Key>
+            <PropertyRef Name="MapID" />
+          </Key>
+          <Property Name="MapID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MapLocationInfo" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="TblMessage">
+          <Key>
+            <PropertyRef Name="MessageID" />
+          </Key>
+          <Property Name="MessageID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MessageSender" Type="nvarchar" MaxLength="50" />
+          <Property Name="MessageReceiver" Type="nvarchar" MaxLength="50" />
+          <Property Name="MessageSubject" Type="nvarchar" MaxLength="50" />
+          <Property Name="MessageContent" Type="nvarchar(max)" />
+          <Property Name="MessageDate" Type="date" />
+          <Property Name="SenderName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ReceiverName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="TblOrder">
           <Key>
             <PropertyRef Name="OrderID" />
@@ -84,6 +104,8 @@
           <EntitySet Name="TblCategory" EntityType="Self.TblCategory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblCity" EntityType="Self.TblCity" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblCustomer" EntityType="Self.TblCustomer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblMap" EntityType="Self.TblMap" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblMessage" EntityType="Self.TblMessage" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblOrder" EntityType="Self.TblOrder" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_TblOrder_TblCity2" Association="Self.FK_TblOrder_TblCity2">
             <End Role="TblCity" EntitySet="TblCity" />
@@ -139,6 +161,8 @@
             <End Role="TblCustomer" EntitySet="TblCustomer" />
             <End Role="TblOrder" EntitySet="TblOrder" />
           </AssociationSet>
+          <EntitySet Name="TblMessage" EntityType="DBLogisticModel.TblMessage" />
+          <EntitySet Name="TblMap" EntityType="DBLogisticModel.TblMap" />
         </EntityContainer>
         <EntityType Name="TblCity">
           <Key>
@@ -201,6 +225,26 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="TblMessage">
+          <Key>
+            <PropertyRef Name="MessageID" />
+          </Key>
+          <Property Name="MessageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MessageSender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MessageReceiver" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MessageSubject" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MessageContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MessageDate" Type="DateTime" Precision="0" />
+          <Property Name="SenderName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ReceiverName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TblMap">
+          <Key>
+            <PropertyRef Name="MapID" />
+          </Key>
+          <Property Name="MapID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MapLocationInfo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -247,6 +291,28 @@
                 <ScalarProperty Name="FromCity" ColumnName="FromCity" />
                 <ScalarProperty Name="OrderCustomer" ColumnName="OrderCustomer" />
                 <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblMessage">
+            <EntityTypeMapping TypeName="DBLogisticModel.TblMessage">
+              <MappingFragment StoreEntitySet="TblMessage">
+                <ScalarProperty Name="ReceiverName" ColumnName="ReceiverName" />
+                <ScalarProperty Name="SenderName" ColumnName="SenderName" />
+                <ScalarProperty Name="MessageDate" ColumnName="MessageDate" />
+                <ScalarProperty Name="MessageContent" ColumnName="MessageContent" />
+                <ScalarProperty Name="MessageSubject" ColumnName="MessageSubject" />
+                <ScalarProperty Name="MessageReceiver" ColumnName="MessageReceiver" />
+                <ScalarProperty Name="MessageSender" ColumnName="MessageSender" />
+                <ScalarProperty Name="MessageID" ColumnName="MessageID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblMap">
+            <EntityTypeMapping TypeName="DBLogisticModel.TblMap">
+              <MappingFragment StoreEntitySet="TblMap">
+                <ScalarProperty Name="MapLocationInfo" ColumnName="MapLocationInfo" />
+                <ScalarProperty Name="MapID" ColumnName="MapID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

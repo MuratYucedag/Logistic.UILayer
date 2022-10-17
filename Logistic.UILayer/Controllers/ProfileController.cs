@@ -21,5 +21,6 @@ namespace Logistic.UILayer.Controllers
             ViewBag.v4 = values.CustomerPhone;
             return View();
         }
+
     }
 }

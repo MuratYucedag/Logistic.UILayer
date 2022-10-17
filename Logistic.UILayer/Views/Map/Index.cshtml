@@ -1,0 +1,10 @@
+﻿@model List<Logistic.UILayer.Models.TblMap>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_NewAdminLayout.cshtml";
+}
+
+@foreach (var item in Model)
+{
+<iframe src="@item.MapLocationInfo" width="100%" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+}

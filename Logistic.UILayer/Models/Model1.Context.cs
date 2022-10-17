@@ -29,5 +29,7 @@ namespace Logistic.UILayer.Models
         public virtual DbSet<TblCustomer> TblCustomer { get; set; }
         public virtual DbSet<TblCity> TblCity { get; set; }
         public virtual DbSet<TblOrder> TblOrder { get; set; }
+        public virtual DbSet<TblMessage> TblMessage { get; set; }
+        public virtual DbSet<TblMap> TblMap { get; set; }
     }
 }

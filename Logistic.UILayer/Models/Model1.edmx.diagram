@@ -14,6 +14,7 @@
         <AssociationConnector Association="DBLogisticModel.FK_TblOrder_TblCustomer1" />
         <EntityTypeShape EntityType="DBLogisticModel.TblMessage" Width="1.5" PointX="3.375" PointY="5.75" />
         <EntityTypeShape EntityType="DBLogisticModel.TblMap" Width="1.5" PointX="5.375" PointY="5.75" />
+        <EntityTypeShape EntityType="DBLogisticModel.TblTestimonial" Width="1.5" PointX="0.75" PointY="6.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

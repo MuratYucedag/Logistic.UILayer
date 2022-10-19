@@ -1,0 +1,52 @@
+﻿
+@using Logistic.UILayer.Models
+@model List<TblTestimonial>
+<div class=" col-md-6 clients">
+    <h3>Testimonials</h3>
+    @foreach (var item in Model)
+    {
+        <p>@item.NameSurname</p>
+    }
+    <section class="slider">
+        <div class="flexslider">
+            <ul class="slides">
+                <li>
+                    <div class="client">
+                        <img src="https://uploads-ssl.webflow.com/5fa452663d18a6699f11aa07/62b46638bedf9aabc6b3c121_Walter%20white.jpg" alt="" />
+                        <h5>Brian Fantana</h5>
+                        <div class="clearfix"> </div>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation .</p>
+
+                </li>
+                <li>
+                    <div class="client">
+                        <img src="~/Templates/ui/web/images/t2.jpg" alt="" />
+                        <h5>Brick Tamland</h5>
+                        <div class="clearfix"> </div>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation .</p>
+
+                </li>
+                <li>
+                    <div class="client">
+                        <img src="~/Templates/ui/web/images/t3.jpg" alt="" />
+                        <h5>Ron Burgundy</h5>
+                        <div class="clearfix"> </div>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation .</p>
+
+                </li>
+                <li>
+                    <div class="client">
+                        <img src="~/Templates/ui/web/images/t4.jpg" alt="" />
+                        <h5>Arturo Mendez</h5>
+                        <div class="clearfix"> </div>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation .</p>
+
+                </li>
+            </ul>
+        </div>
+    </section>
+</div>
